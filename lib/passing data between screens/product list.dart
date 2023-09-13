@@ -1,41 +1,43 @@
-import 'dart:js';
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_project/ListView%20Builder.dart';
-import 'package:flutter_project/passing%20data%20between%20screens/DummyData.dart';
 import 'package:flutter_project/passing%20data%20between%20screens/product%20details.dart';
+import 'dummydata.dart';
 
-void main(){
-  runApp(MaterialApp(debugShowCheckedModeBanner: false,
+void main() {
+  runApp(MaterialApp(
+    home: ProductList(),
+    debugShowCheckedModeBanner: false,
+    // named routes used in Navigator.pushNamed()
     routes: {
-    "details" :(context)=> ProductDetails(),
-      "cart":(context)=> ListView3(),
+      "details": (context) => ProductDetails(),
+      // "cart": (context) => ListView3(),
     },
-    home: ProductList(),));
+  ));
 }
-class ProductList extends StatelessWidget{
 
+class ProductList extends StatelessWidget {
   @override
-  Widget build(BuildContext context){
+  Widget build(BuildContext context) {
     return Scaffold(
-appBar: AppBar(title: Text("My products"),),
+      appBar: AppBar(
+        title: Text("My Products"),
+      ),
       body: ListView(
         padding: EdgeInsets.all(15),
-        children: Products.map((e)=> ListTile(
-    leading: Image.asset(e["name"]),
-    title: Text(e["name"]),
-    )).toList(),
+        children: products.map((e) => ListTile(
+          leading: Image.asset(e["image"]),
+          title: Text(e["name"]),
+          onTap: ()=> gotodetails(context,e['id']),
+          // onTap: ()=> Nav2igator.pushNamed(context, 'details',arguments: e['id']),
+        )).toList(),
       ),
     );
   }
+
+  void gotodetails(BuildContext context, id) {   // id = e['id'] - id of item that we tapped
+    Navigator.pushNamed(context, "details", arguments: id);
+  }
 }
-
-void gotodetails(BuildContext context,id){
-  Navigator.pushNamed(context, routeName)
-}
-
-
-//e -> each single mep in the list
-//list.map -> iterate all the data in the list
-//to loList used to convert the map values to list
+// e        -> each single map in the list
+// list.map -> iterate all the map in the list as
+// toList   -> used to convert the map values to List
+//arguments -> data to be passed to the next screen

@@ -1,26 +1,28 @@
-// ignore: non_constant_identifier_names
-List<Map<String,dynamic>> Products = [
+List<Map<String,dynamic>> products = [
   {
-    "name":"product 1",
+    "id"  : 1,
+    "name":"Product 1",
     "price":300,
     "rating":4,
-    "image":"- assets/icons/bag.png",
-    "description":"A bag is a must-have item whenever you are heading out, as it is a handy product wherein you can store and carry all your essentials.",
-    },
+    "image":"assets/icons/bag.png",
+    "description": "A bag is a must-have item whenever you are heading out, as it is a handy product wherein you can store and carry all your essentials."
+  },
   {
-    "id": 2,
-    "name":"product 2",
+    "id"  : 2,
+    "name":"Product 2",
     "price":400,
     "rating":4.8,
-    "image":"- assets/icons/shoes.png",
-    "description":"a covering for the foot, typically made of leather, having a sturdy sole and not reaching above the ankle.",
+    "image":"assets/icons/shoe.png",
+    "description": "A Shoe is a must-have item whenever you are heading out, as it is a handy product wherein you can store and carry all your essentials."
+
   },
   {
-    "id": 3,
-    "name":"product 3",
-    "price":700,
-    "rating":4.9,
-    "image":"assets/icons/glass.png",
-    "description":"a device used to correct defects of vision or to protect the eyes that consists typically of a pair of glass or plastic lenses and the frame by which they are held in place"
-  },
-}
+    "id"  : 3,
+    "name":"Product 3",
+    "price":1300,
+    "rating":4.2,
+    "image":"assets/icons/dress.png",
+    "description": "A Dress is a must-have item whenever you are heading out, as it is a handy product wherein you can store and carry all your essentials."
+
+  }
+];

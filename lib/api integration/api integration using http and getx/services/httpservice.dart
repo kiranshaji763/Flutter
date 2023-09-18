@@ -1,5 +1,7 @@
-import '../model/productmodel.dart';
+
 import 'package:http/http.dart'as http;
+
+import '../model/productModel.dart';
 
 class HttpService{
 

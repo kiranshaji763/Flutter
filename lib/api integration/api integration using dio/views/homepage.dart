@@ -1,12 +1,21 @@
 import 'package:flutter/material.dart';
-import '../utils/colors.dart';
-import 'detailspage.dart';
+import 'package:flutter_project/api%20integration/api%20integration%20using%20dio/utils/colors.dart';
+import 'package:flutter_project/api%20integration/api%20integration%20using%20dio/views/detailspage.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:lottie/lottie.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
+import 'package:top_snackbar_flutter/custom_snack_bar.dart';
+import 'package:top_snackbar_flutter/top_snack_bar.dart';
 
 import '../controller/product_controller.dart';
+
+void main() {
+  runApp(GetMaterialApp(
+    home: HomeDio(),
+  ));
+}
 
 class HomeDio extends StatelessWidget {
   Product_controller controller = Get.put(Product_controller());
@@ -17,13 +26,14 @@ class HomeDio extends StatelessWidget {
       backgroundColor: MyColors.bgcolor,
       floatingActionButton: Obx(() =>
       controller.isInternetConnected.value ? buildFAB() : Container()),
-      body: Obx(() => SizedBox(
-        width: double.infinity,
-        height: double.infinity,
-        child: controller.isInternetConnected.value
-            ? (controller.isLoading.value ? loadAnimation() : getData())
-            : noInternet(context),
-      )),
+      body: Obx(() =>
+          SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: controller.isInternetConnected.value
+                ? (controller.isLoading.value ? loadAnimation() : getData())
+                : noInternet(context),
+          )),
     );
   }
 
@@ -87,5 +97,34 @@ class HomeDio extends StatelessWidget {
             );
           }),
     );
+  }
+
+  Center noInternet(BuildContext context) {
+    return Center(
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            height: 100,
+            width: 100,
+            child: Lottie.asset("assets/animations/nointernet.json"),
+          ),
+          MaterialButton(
+            onPressed: () => ontapMaterialButton(context),
+            child: Text("Try Again"),
+          )
+        ],
+      ),
+    );
+  }
+  void ontapMaterialButton(BuildContext context) async {
+    if (await InternetConnectionChecker().hasConnection == true) {
+      controller.getposts();
+    } else {
+      showTopSnackBar(
+          Overlay.of(context),
+          CustomSnackBar.error(
+            message: 'No Internet Connection!!! Please Try Again',));
+    }
   }
 }

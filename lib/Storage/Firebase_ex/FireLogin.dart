@@ -1,7 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import '../Homefire.dart';
-import 'Registration.dart';
+import 'package:flutter_project/Storage/Firebase_ex/Home%20Fire.dart';
+import 'package:flutter_project/Storage/Firebase_ex/Registration.dart';
 import 'firebasehelper.dart';
 
 void main() async {
@@ -69,7 +69,7 @@ class _LoginFireState extends State<LoginFire> {
             ElevatedButton(
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => const FireRegistration()));
+                      builder: (context) => FireRegistration()));
                 },
                 child: const Text("Register Here")),
           ],

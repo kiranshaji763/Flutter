@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'Firebase_ex/FireLogin.dart';
-import 'Firebase_ex/FirebaseHelper.dart';
+import 'firebasehelper.dart';
+import 'firelogin.dart';
 
 class HomeFire extends StatelessWidget {
   const HomeFire({super.key});
@@ -14,7 +14,8 @@ class HomeFire extends StatelessWidget {
             onPressed: () {
               FireHelper().signOut().then((value) {
                 Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) => LoginFire()));
+                    .push(MaterialPageRoute(
+                    builder: (context) => LoginFire()));
               });
             },
             child: Text("Sign_Out")),

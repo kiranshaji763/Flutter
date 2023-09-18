@@ -1,9 +1,9 @@
 import 'package:flutter/animation.dart';
-import 'package:flutter_project_may/api%20integration/api%20integration%20using%20dio/model/post_model.dart';
 import 'package:get/get.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:scrollable_positioned_list/scrollable_positioned_list.dart';
 
+import '../model/post_model.dart';
 import '../service/dio_service.dart';
 
 class Product_controller extends GetxController {
